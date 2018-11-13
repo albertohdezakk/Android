@@ -47,7 +47,7 @@ public class LoginActivity extends Activity {
 		edtEmail = (EditText) findViewById(R.id.edtEmail);
 		edtPass = (EditText) findViewById(R.id.edtPass);
 		
- 		//14
+ 		
         btnLogin = (Button) findViewById(R.id.btnEnviar);
 	        
 	        btnLogin.setOnClickListener(new OnClickListener() {
