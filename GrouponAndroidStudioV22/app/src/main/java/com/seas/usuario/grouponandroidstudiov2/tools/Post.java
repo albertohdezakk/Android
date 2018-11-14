@@ -39,9 +39,10 @@ public class Post {
 		}
 		return sb.toString();
 	}
+	HttpURLConnection con = null;
+	OutputStreamWriter writer = null;
 	private void conectaPost(Map<String,String> dataToSend, String pagina) {
-		HttpURLConnection con = null;
-		OutputStreamWriter writer = null;
+
 		try {
 
 			// Preparo la cadena con las claves y valores que quiero que le llegue al Servidor
@@ -76,17 +77,6 @@ public class Post {
         } catch (Exception e) {
         	Log.e("log_tag", "Error in http connection " + e.toString());
         } finally {
-				try {
-					if(writer!=null) {
-						writer.close();
-					}
-					if(con!=null)
-					{
-						con.disconnect();
-					}
-				} catch (Exception e) {
-					Log.e("log_tag", "Error in http connection " + e.toString());
-				}
 			}
 
         }
@@ -136,6 +126,17 @@ public class Post {
 		} catch (Exception e) {
 			Log.e("log_tag", "Error converting result " + e.toString());
 		}finally {
+			try {
+				if(writer!=null) {
+					writer.close();
+				}
+				if(con!=null)
+				{
+					con.disconnect();
+				}
+			} catch (Exception e) {
+				Log.e("log_tag", "Error in http connection " + e.toString());
+			}
 			return jArray;
 		}
 	}
